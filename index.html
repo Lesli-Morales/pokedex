@@ -21,35 +21,11 @@
         </div>    
     </body>
 
-    <script>
 
-        const pokemonNombre = document.getElementById("pokemon")
-        const inputBuscador= document.getElementById("heroBuscador")
-        const btnBuscador = document.getElementById("heroBtn")
+    <script src="js/pokedex.js"></script>
 
-        btnBuscador.onclick = ()=>{
-            console.log("Pokemon: "+inputBuscador.value);
+  <!--   <script>
 
-            let nombrePokemon = inputBuscador.value
-        
-            fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
-            .then(function(respuesta){
-                return respuesta.json()
-            })
-            .then((pokemon)=>{
-              console.log(pokemon);
-                
-            })
-            .catch((error)=>{
-                console.log(error);
-            })
-
-
-        }
-
-
-
-        
 
         /* function id(id){
             fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -109,5 +85,5 @@
         }
 
         infoPokemon(150) */
-    </script>
+    </script> -->
 </html>

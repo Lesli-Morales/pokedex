@@ -1,39 +1,23 @@
-let contenedor= document.getElementById("container");
+const pokemonNombre = document.getElementById("pokemon")
+const inputBuscador= document.getElementById("heroBuscador")
+const btnBuscador = document.getElementById("heroBtn")
 
-function infoPokemon(pokemonId){
-    for(let x=1;x<=pokemonId;x++){
-        idPokemon(x);
-    }
-}
+btnBuscador.onclick = ()=>{
+    console.log("Pokemon: "+inputBuscador.value);
 
+    let nombrePokemon = inputBuscador.value
 
-let pokemonDiv = document.getElementById("pokemon");
-async function idPokemon(idPokemon){
-    fetch(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
     .then(function(respuesta){
         return respuesta.json()
     })
-   // .then((data)=> console.log(data))
-
     .then((pokemon)=>{
-       
-        let idPokemon= document.createElement("label")
-        let imagen = document.createElement("img")
-        let nombre = document.createElement("p")
-
-        idPokemon.innerText= pokemon.id;
-        imagen.src = pokemon.sprites.front_default;
-        nombre.innerText= pokemon.name;
-
-
-        pokemonDiv.appendChild(imagen)
-        pokemonDiv.appendChild(idPokemon)
-        pokemonDiv.appendChild(nombre)
+      console.log(pokemon);
         
     })
     .catch((error)=>{
         console.log(error);
     })
-}
 
-infoPokemon(2);
+
+}
