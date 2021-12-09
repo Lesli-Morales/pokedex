@@ -4,8 +4,36 @@
     box-sizing: border-box;
 }
 
-body{
-    background-color: rgb(219, 180, 219);
+.hero{
+    display: flex;
+    justify-content: space-between;
+    background-color: red;
+    height: 25vh;
+}
+
+.hero-busqueda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.hero-busqueda__buscador{
+    padding: 3px;
+    margin-right: 4px;
+}
+
+.hero-busqueda__btn{
+    background-color: yellow;
+    color: rgb(37, 103, 247);
+    text-align: center;
+    font-weight: bold;
+    padding: 3px;
+    border: medium solid rgb(37, 103, 247);
+}
+
+.hero-busqueda__btn:hover{
+    cursor: pointer;
 }
 
 
