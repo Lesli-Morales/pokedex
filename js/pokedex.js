@@ -9,8 +9,6 @@ function id(id){
 
     .then((pokemon)=>{
         let contenedorNombre= document.createElement("div")
-        let contenedorId = document.createElement("div");
-        let pokebola = document.createElement("img")
        
         let idPokemon= document.createElement("label")
         let imagen = document.createElement("img")
@@ -18,30 +16,29 @@ function id(id){
 
        
         contenedorNombre.classList.add("contenedorNombre")
-        contenedorId.classList.add("contenedorId");
-        pokebola.classList.add("pokebola")
+        idPokemon.classList.add("idPokemon")
         imagen.classList.add("imagenPokemon")
+        nombre.classList.add("nombrePokemon")
 
         
         if(pokemon.id.toString().length>=1 && pokemon.id.toString().length<2){
             idPokemon.innerText= "#00"+ pokemon.id
-        }else if(pokemon.id.toString().length>=2 && pokemon.id.toString().length<3){
+        }
+        else if(pokemon.id.toString().length>=2 && pokemon.id.toString().length<3){
             idPokemon.innerText= "#0"+ pokemon.id
-        }else if(pokemon.id.toString().length>=3){
-            idPokemon.innerText= pokemon.id
+        }
+        else if(pokemon.id.toString().length>=3){
+            idPokemon.innerText= "#"+pokemon.id
         }
 
         imagen.src = pokemon.sprites.front_default;
         nombre.innerText= pokemon.name;
-        pokebola.src = "imagenes/pokebola.png"
 
-        contenedorId.appendChild(pokebola);
-        contenedorId.appendChild(idPokemon)
-        contenedorNombre.appendChild(contenedorId)
-
+      
         contenedorNombre.appendChild(imagen)
         contenedorNombre.appendChild(nombre)
-
+        contenedorNombre.appendChild(idPokemon)
+        
         pokemonNombre.appendChild(contenedorNombre)
 
         
@@ -57,7 +54,7 @@ function infoPokemon(pokemon){
     }
 }
 
-infoPokemon(3)
+infoPokemon(12)
 
 
 
