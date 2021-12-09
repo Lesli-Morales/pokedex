@@ -12,8 +12,8 @@
         <header class="hero">
             <img class="hero-image" src="imagenes/logo-pokemon.png" alt="Logo Pokémon">
             <div class="hero-busqueda">
-                <input type="text" class="hero-busqueda__buscador" placeholder="Nombre de pokémon">
-                <button class="hero-busqueda__btn">Buscar</button>
+                <input type="text" id="heroBuscador" class="hero-busqueda__buscador" placeholder="Nombre de pokémon">
+                <button id="heroBtn" class="hero-busqueda__btn">Buscar</button>
             </div>
         </header>
 
@@ -24,8 +24,34 @@
     <script>
 
         const pokemonNombre = document.getElementById("pokemon")
+        const inputBuscador= document.getElementById("heroBuscador")
+        const btnBuscador = document.getElementById("heroBtn")
 
-        function id(id){
+        btnBuscador.onclick = ()=>{
+            console.log("Pokemon: "+inputBuscador.value);
+
+            let nombrePokemon = inputBuscador.value
+        
+            fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
+            .then(function(respuesta){
+                return respuesta.json()
+            })
+            .then((pokemon)=>{
+              console.log(pokemon);
+                
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+
+
+        }
+
+
+
+        
+
+        /* function id(id){
             fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
             .then(function(respuesta){
                 return respuesta.json()
@@ -82,6 +108,6 @@
             }
         }
 
-        infoPokemon(150)
+        infoPokemon(150) */
     </script>
 </html>
