@@ -4,8 +4,6 @@ const inputBuscador= document.getElementById("heroBuscador")
 const btnBuscador = document.getElementById("heroBtn")
 
 btnBuscador.onclick = ()=>{
-    console.log("Pokemon: "+inputBuscador.value);
-
     let nombrePokemon = inputBuscador.value
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`)
@@ -20,28 +18,17 @@ btnBuscador.onclick = ()=>{
       let idPokemon= document.createElement("label")
       let imagen = document.createElement("img")
       let nombre = document.createElement("p")
-
      
       contenedorNombre.classList.add("contenedorNombre")
       idPokemon.classList.add("idPokemon")
       imagen.classList.add("imagenPokemon")
       nombre.classList.add("nombrePokemon")
 
-      
-      if(pokemon.id.toString().length>=1 && pokemon.id.toString().length<2){
-          idPokemon.innerText= "#00"+ pokemon.id
-      }
-      else if(pokemon.id.toString().length>=2 && pokemon.id.toString().length<3){
-          idPokemon.innerText= "#0"+ pokemon.id
-      }
-      else if(pokemon.id.toString().length>=3){
-          idPokemon.innerText= "#"+pokemon.id
-      }
-
+      idPokemon.innerText = idCompleto(pokemon.id)
+     
       imagen.src = pokemon.sprites.front_default;
       nombre.innerText= pokemon.name;
 
-    
       contenedorNombre.appendChild(imagen)
       contenedorNombre.appendChild(nombre)
       contenedorNombre.appendChild(idPokemon)
@@ -55,6 +42,19 @@ btnBuscador.onclick = ()=>{
 
 
 }
+
+function idCompleto(id){
+    if(id.toString().length>=1 && id.toString().length<2){
+       return id = "#00" + id
+    }
+    else if(id.toString().length>=2 && id.toString().length<3){
+        return id = "#0"+ id
+    }
+    else if(id.toString().length>=3){
+        return id = "#"+ id
+    }
+}
+
 
 function id(id){
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -76,16 +76,7 @@ function id(id){
         imagen.classList.add("imagenPokemon")
         nombre.classList.add("nombrePokemon")
 
-        
-        if(pokemon.id.toString().length>=1 && pokemon.id.toString().length<2){
-            idPokemon.innerText= "#00"+ pokemon.id
-        }
-        else if(pokemon.id.toString().length>=2 && pokemon.id.toString().length<3){
-            idPokemon.innerText= "#0"+ pokemon.id
-        }
-        else if(pokemon.id.toString().length>=3){
-            idPokemon.innerText= "#"+pokemon.id
-        }
+        idPokemon.innerText = idCompleto(pokemon.id)
 
         imagen.src = pokemon.sprites.front_default;
         nombre.innerText= pokemon.name;
