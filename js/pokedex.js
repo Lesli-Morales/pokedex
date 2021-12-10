@@ -68,6 +68,11 @@ function idCompleto(id){
     }
 }
 
-
-
+const pokeColores = {
+    electric: "#ffea70",
+    normal: "#b09398",
+    fire: "#ff675c",
+    water: "#0596c7",
+    
+}
 
