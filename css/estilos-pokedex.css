@@ -51,7 +51,8 @@
     margin: 0 50px 50px;
     padding-left: 5px;
     height: 17vh;
-    border: medium solid black;
+    box-shadow: 0 0 10px grey;
+    color: white;
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -64,7 +65,12 @@
     right: 1rem;
 }
 
-.idPokemon, .nombrePokemon{
-    padding: 10px;
-    
+.nombrePokemon{
+    padding: 10px 0 0 15px;
+}
+
+.idPokemon{
+    padding-left:15px;
+    font-size: 1rem;
+    color: whitesmoke;
 }

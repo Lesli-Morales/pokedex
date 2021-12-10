@@ -4,8 +4,6 @@ const inputBuscador= document.getElementById("heroBuscador")
 const btnBuscador = document.getElementById("heroBtn")
 
 
-let contenedorNombre= document.createElement("div")
-
 function id(id){
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(function(respuesta){
