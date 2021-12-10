@@ -14,8 +14,17 @@ btnBuscador.onclick = ()=>{
     })
     .then((pokemon)=>{
       console.log(pokemon);
-      
-      let contenedorNombre= document.createElement("div")
+
+      creacionCard(pokemon)
+        
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+}
+
+function creacionCard(pokemon){
+    let contenedorNombre= document.createElement("div")
        
       let idPokemon= document.createElement("label")
       let imagen = document.createElement("img")
@@ -45,16 +54,25 @@ btnBuscador.onclick = ()=>{
       contenedorNombre.appendChild(imagen)
       contenedorNombre.appendChild(nombre)
       contenedorNombre.appendChild(idPokemon)
-      
-      pokemonNombre.appendChild(contenedorNombre)
-        
-    })
-    .catch((error)=>{
-        console.log(error);
-    })
 
-
+     return pokemonNombre.appendChild(contenedorNombre)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function id(id){
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
