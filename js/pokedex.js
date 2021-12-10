@@ -3,6 +3,9 @@ const pokemonNombre = document.getElementById("pokemon")
 const inputBuscador= document.getElementById("heroBuscador")
 const btnBuscador = document.getElementById("heroBtn")
 
+
+let contenedorNombre= document.createElement("div")
+
 function id(id){
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(function(respuesta){
@@ -10,6 +13,7 @@ function id(id){
     })
 
     .then((pokemon)=>{
+        console.log(pokemon);
         creacionCard(pokemon)
         
     })
@@ -24,17 +28,25 @@ function infoPokemon(pokemon){
     }
 }
 
-infoPokemon(12)
+infoPokemon(100)
 
 btnBuscador.onclick = ()=>{
     let nombrePokemon = inputBuscador.value
     id(nombrePokemon)
+
 }
 
 
 function creacionCard(pokemon){
-    let contenedorNombre= document.createElement("div")
-       
+
+     let contenedorNombre= document.createElement("div")
+    
+     const {types} = pokemon 
+
+    const color = pokeColores[types[0].type.name]
+    contenedorNombre.style.background = `${color}`
+
+
       let idPokemon= document.createElement("label")
       let imagen = document.createElement("img")
       let nombre = document.createElement("p")
@@ -56,6 +68,9 @@ function creacionCard(pokemon){
      return pokemonNombre.appendChild(contenedorNombre)
 }
 
+
+
+
 function idCompleto(id){
     if(id.toString().length>=1 && id.toString().length<2){
        return id = "#00" + id
@@ -73,6 +88,18 @@ const pokeColores = {
     normal: "#b09398",
     fire: "#ff675c",
     water: "#0596c7",
-    
+    ice: "#afeafd",
+    rock:"#999799",
+    flying:"#7ae7c7",
+    grass:"#4a9681",
+    psychic:"#ffc6d9",
+    ghost: "#561d25",
+    bug: "#a2faa3",
+    poison: "#795663",
+    ground: "#d2b074",
+    dragon: "#da627d",
+    steel: "#1d8a99",
+    fighting: "#2f2f2f",
+    default: "#2a1a1f"
 }
 
