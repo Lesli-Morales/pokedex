@@ -48,16 +48,21 @@ function creacionCard(pokemon){
       let idPokemon= document.createElement("label")
       let imagen = document.createElement("img")
       let nombre = document.createElement("p")
+      let detallesLink = document.createElement("a")
      
       contenedorNombre.classList.add("contenedorNombre")
       idPokemon.classList.add("idPokemon")
       imagen.classList.add("imagenPokemon")
       nombre.classList.add("nombrePokemon")
+      detallesLink.classList.add("link-detalles")
 
       idPokemon.innerText = idCompleto(pokemon.id)
      
       imagen.src = pokemon.sprites.front_default;
       nombre.innerText= pokemon.name;
+
+      detallesLink.innerText= "Info Pokémon"
+      detallesLink.href=`/pokeDetalles.html?id=${pokemon.id}`
 
       contenedorNombre.appendChild(imagen)
       contenedorNombre.appendChild(nombre)
