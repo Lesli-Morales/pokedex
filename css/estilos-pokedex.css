@@ -5,13 +5,13 @@
 }
 
 .hero{
+    position: fixed;
+    top: 0;
     display: flex;
     justify-content: space-between;
     background-color: red;
     width: 100%;
     height: 20vh;
-    position: fixed;
-    top: 0;
     z-index: 10;
 }
 
@@ -23,54 +23,80 @@
 }
 
 .hero-busqueda__buscador{
-    padding: 3px;
     margin-right: 4px;
+    padding: 3px;
 }
 
 .hero-busqueda__btn{
-    background-color: yellow;
+    padding: 3px;
     color: rgb(37, 103, 247);
     text-align: center;
     font-weight: bold;
-    padding: 3px;
+    background-color: yellow;
     border: medium solid rgb(37, 103, 247);
-}
-
-.hero-busqueda__btn:hover{
     cursor: pointer;
 }
 
 .pokemon {
     width: 100%;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 33.33%);
 	margin: 24vh 0;
 }
 
 .contenedorNombre{
+    position: relative;
     margin: 0 50px 50px;
     padding-left: 5px;
     height: 17vh;
-    box-shadow: 0 0 10px grey;
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 25px;
-    position: relative;
+    box-shadow: 0 0 10px grey;
 }
 
-.imagenPokemon{
-    position: absolute;
-    right: 1rem;
+.idPokemon{
+    padding-left: 1rem;
+    font-size: 1rem;
+    color: whitesmoke;
 }
 
 .nombrePokemon{
     padding: 10px 0 0 15px;
 }
 
-.idPokemon{
-    padding-left:15px;
-    font-size: 1rem;
-    color: whitesmoke;
+.imagenPokemon{
+    position: absolute;
+    right: 1rem;
+    transform: scale(1.5);
+    filter: drop-shadow(3px 5px 5px black);
 }
+
+.link-detalles {
+    display: block;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    width: 50%;
+    padding: .5rem;
+}
+
+
+/* .pokemon-encontrado__div {
+   position: fixed;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 25vh;
+   z-index: 20;
+   background-color: #0008;
+} */
+
+.pokemon-encontrado {
+    width: 50%;
+}
+
+/* **************** DETALLES ************** */
