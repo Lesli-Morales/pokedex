@@ -1,4 +1,5 @@
 const pokeDetallesDiv = document.getElementById("pokeDetalles")
+const contenedorNombre = document.getElementById("pokeDetalles-container")
 
 const query = window.location.search
 const parametros = new URLSearchParams(query)
@@ -37,35 +38,69 @@ fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
 
 
 function creacionCard(pokemon){
-
-    let contenedorNombre= document.createElement("div")
     
     const {types} = pokemon 
 
-    const color = pokeColores[types[0].type.name]
+    let tipo = types[0].type.name
+
+    const color = pokeColores[tipo]
     document.body.style.background = `${color}`
 
+      
+    let pokeDetallesInfo = document.createElement("div")
+    let pokeDetallesTipo = document.createElement("div")
+    let pokeDetallesPeso = document.createElement("div")
+    let pokeDetallesAltura = document.createElement("div")
 
       let idPokemon= document.createElement("label")
       let imagen = document.createElement("img")
       let nombre = document.createElement("p")
+      let tipoD = document.createElement("p")
+      let peso = document.createElement("p")
+      let altura = document.createElement("p")
+      let tipoEti = document.createElement("label")
+      let pesoEti = document.createElement("label")
+      let alturaEti = document.createElement("label")
+      
      
-      contenedorNombre.classList.add("contenedorNombre")
-      idPokemon.classList.add("idPokemon")
-      imagen.classList.add("imagenPokemon")
-      nombre.classList.add("nombrePokemon")
+      contenedorNombre.classList.add("pokeDetalles-container")
+      pokeDetallesInfo.classList.add("pokeDetalles-info")
+      imagen.classList.add("pokeDetalles-img")
+      idPokemon.classList.add("pokeDetalles-id")
+      nombre.classList.add("pokeDetalles-nombre")
+
 
       idPokemon.innerText = idCompleto(pokemon.id)
      
       imagen.src = pokemon.sprites.front_default;
       nombre.innerText= pokemon.name;
 
+      tipoD.innerText = tipo
+      tipoEti.innerText = "Tipo"
+      peso.innerText= pokemon.weight
+      console.log(pokemon.weight);
+      pesoEti.innerText = "Peso"
+      altura.innerText = pokemon.height
+      alturaEti.innerText = "Altura"
 
       contenedorNombre.appendChild(imagen)
       contenedorNombre.appendChild(nombre)
       contenedorNombre.appendChild(idPokemon)
+/* 
+      pokeDetallesTipo.appendChild(tipoD)
+      pokeDetallesTipo.appendChild(tipo)
 
-     return pokeDetallesDiv.appendChild(contenedorNombre)
+      pokeDetallesPeso.appendChild(peso)
+      pokeDetallesPeso.appendChild(pesoEti)
+
+      pokeDetallesAltura.appendChild(altura)
+      pokeDetallesAltura.appendChild(alturaEti)
+
+      pokeDetallesInfo.appendChild(pokeDetallesTipo)
+      pokeDetallesInfo.appendChild(pokeDetallesPeso)
+      pokeDetallesInfo.appendChild(pokeDetallesAltura) */
+
+     return  pokeDetallesDiv.appendChild(contenedorNombre)
 }
 
 function idCompleto(id){
