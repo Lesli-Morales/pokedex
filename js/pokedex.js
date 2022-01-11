@@ -99,10 +99,13 @@ function creacionCard(pokemon){
 
     let contenedorNombre= document.createElement("div")
     
+    let contenedorPokemon = document.createElement("div")
+    contenedorPokemon.classList.add("contenedor-pokemon")
+    
     const {types} = pokemon 
 
     const color = pokeColores[types[0].type.name]
-    contenedorNombre.style.background = `${color}`
+    contenedorPokemon.style.background = `${color}`
 
 
       let idPokemon= document.createElement("label")
@@ -110,10 +113,10 @@ function creacionCard(pokemon){
       let nombre = document.createElement("p")
       let detallesLink = document.createElement("a")
      
-      contenedorNombre.classList.add("contenedorNombre")
-      idPokemon.classList.add("idPokemon")
-      imagen.classList.add("imagenPokemon")
-      nombre.classList.add("nombrePokemon")
+      contenedorNombre.classList.add("contenedor-nombre")
+      idPokemon.classList.add("id-pokemon")
+      imagen.classList.add("imagen-pokemon")
+      nombre.classList.add("nombre-pokemon")
       detallesLink.classList.add("link-detalles")
 
       idPokemon.innerText = idCompleto(pokemon.id)
@@ -124,12 +127,16 @@ function creacionCard(pokemon){
       detallesLink.innerText= "Ver Pokémon"
       detallesLink.href=`/pokeDetalles.html?id=${pokemon.id}`
 
-      contenedorNombre.appendChild(imagen)
+
+     /*  contenedorNombre.appendChild(imagen) */
       contenedorNombre.appendChild(nombre)
       contenedorNombre.appendChild(idPokemon)
       contenedorNombre.appendChild(detallesLink)
 
-     return pokemonNombre.appendChild(contenedorNombre)
+      contenedorPokemon.appendChild(contenedorNombre)
+      contenedorPokemon.appendChild(imagen)
+
+     return pokemonNombre.appendChild(contenedorPokemon)
 }
 
 
@@ -146,4 +153,4 @@ function idCompleto(id){
 }
 
 
-infoPokemon(9)
+infoPokemon(150)
