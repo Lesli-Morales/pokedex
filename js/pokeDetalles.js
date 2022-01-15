@@ -46,61 +46,58 @@ function creacionCard(pokemon){
     const color = pokeColores[tipo]
     document.body.style.background = `${color}`
 
-      
-    let pokeDetallesInfo = document.createElement("div")
-    let pokeDetallesTipo = document.createElement("div")
-    let pokeDetallesPeso = document.createElement("div")
-    let pokeDetallesAltura = document.createElement("div")
+    let pokeDetalle = document.createElement("div");
+    let pokePerfiles = document.createElement("div")
 
       let idPokemon= document.createElement("label")
       let imagen = document.createElement("img")
+      let imagenShiny = document.createElement("img")
       let nombre = document.createElement("p")
-      let tipoD = document.createElement("p")
-      let peso = document.createElement("p")
-      let altura = document.createElement("p")
-      let tipoEti = document.createElement("label")
-      let pesoEti = document.createElement("label")
-      let alturaEti = document.createElement("label")
+   
       
      
       contenedorNombre.classList.add("pokeDetalles-container")
-      pokeDetallesInfo.classList.add("pokeDetalles-info")
+      pokeDetalle.classList.add("pokeDetalle")
+      pokePerfiles.classList.add("pokePerfiles");
       imagen.classList.add("pokeDetalles-img")
       idPokemon.classList.add("pokeDetalles-id")
       nombre.classList.add("pokeDetalles-nombre")
 
 
-      idPokemon.innerText = idCompleto(pokemon.id)
-     
       imagen.src = pokemon.sprites.front_default;
       nombre.innerText= pokemon.name;
+      idPokemon.innerText = idCompleto(pokemon.id)
 
-      tipoD.innerText = tipo
-      tipoEti.innerText = "Tipo"
-      peso.innerText= pokemon.weight
-      console.log(pokemon.weight);
-      pesoEti.innerText = "Peso"
-      altura.innerText = pokemon.height
-      alturaEti.innerText = "Altura"
+    pokeDetalle.innerHTML = `
+        <div>
+            <p>${pokemon.height}m</p> 
+            <label>Altura</label>
+        </div>
+        <div>
+            <p>${tipo}</p> 
+            <label>Tipo</label>
+        </div>
+        <div>
+            <p>${pokemon.weight}Kg</p> 
+            <label>Peso</label>
+        </div>`;
+     
+        pokePerfiles.innerHTML = `
+            <p> ${pokemon.name} Shiny</p>
+            <img src=" ${imagenShiny.src = pokemon.sprites.front_shiny}">
+            <img src=" ${imagenShiny.src = pokemon.sprites.back_shiny}">
+        `;
 
-      contenedorNombre.appendChild(imagen)
-      contenedorNombre.appendChild(nombre)
-      contenedorNombre.appendChild(idPokemon)
-/* 
-      pokeDetallesTipo.appendChild(tipoD)
-      pokeDetallesTipo.appendChild(tipo)
+   
 
-      pokeDetallesPeso.appendChild(peso)
-      pokeDetallesPeso.appendChild(pesoEti)
-
-      pokeDetallesAltura.appendChild(altura)
-      pokeDetallesAltura.appendChild(alturaEti)
-
-      pokeDetallesInfo.appendChild(pokeDetallesTipo)
-      pokeDetallesInfo.appendChild(pokeDetallesPeso)
-      pokeDetallesInfo.appendChild(pokeDetallesAltura) */
-
-     return  pokeDetallesDiv.appendChild(contenedorNombre)
+        contenedorNombre.appendChild(nombre)
+        contenedorNombre.appendChild(idPokemon)
+        contenedorNombre.appendChild(pokeDetalle);
+        contenedorNombre.appendChild(pokePerfiles)
+        
+        
+    pokeDetallesDiv.appendChild(imagen)
+    pokeDetallesDiv.appendChild(contenedorNombre)
 }
 
 function idCompleto(id){
