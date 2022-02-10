@@ -4,7 +4,9 @@ const inputBuscador= document.getElementById("heroBuscador")
 const btnBuscador = document.getElementById("heroBtn")
 
 const nuevoContenedor = document.getElementById("poke-encontrado")
-nuevoContenedor.classList.add("pokemon-encontrado__div")
+const nuevo =document.createElement("div")
+const btnCerrar = document.getElementById("poke-encontado-btn")
+const contenedorEncontrar = document.getElementById("encontrado")
 
 const pokeColores = {
     electric: "#ffea70",
@@ -23,67 +25,34 @@ const pokeColores = {
     dragon: "#da627d",
     steel: "#1d8a99",
     fighting: "#2f2f2f",
+    fairy:"#ff93e5",
     default: "#2a1a1f"
 }
 
-function infoPokemon(pokemon){
+btnBuscador.onclick = ()=>{
+    let nombrePokemon = inputBuscador.value
+    nombrePokemon= nombrePokemon.toLowerCase();
+    contenedorEncontrar.classList.remove("activar")
+    id(nombrePokemon)
+}
+
+
+const infoPokemon = (pokemon) => {
     for(let x=1;x<=pokemon;x++){
         id(x)
     }
 }
 
-btnBuscador.onclick = ()=>{
-    let nombrePokemon = inputBuscador.value
-    id(nombrePokemon)
-}
 
-function pokemonBuscado(pokemon) {
-    document.getElementById("poke-encontrado").innerHTML = ""
-    const nuevo =document.createElement("div")
-
-    const {types} = pokemon 
-
-    const color = pokeColores[types[0].type.name]
-    nuevo.style.background = `${color}`
-
-
-      let idPokemon= document.createElement("label")
-      let imagen = document.createElement("img")
-      let nombre = document.createElement("p")
-      let detallesLink = document.createElement("a")
-     
-      nuevo.classList.add("pokemon-encontrado")
-      /* idPokemon.classList.add("idPokemon")
-      imagen.classList.add("imagenPokemon")
-      nombre.classList.add("nombrePokemon")
-      detallesLink.classList.add("link-detalles") */
-
-      idPokemon.innerText = idCompleto(pokemon.id)
-     
-      imagen.src = pokemon.sprites.front_default;
-      nombre.innerText= pokemon.name;
-
-      detallesLink.innerText= "Ver Pokémon"
-      detallesLink.href=`/pokeDetalles.html?id=${pokemon.id}`
-
-      nuevo.appendChild(imagen)
-      nuevo.appendChild(nombre)
-      nuevo.appendChild(idPokemon)
-      nuevo.appendChild(detallesLink)
-
-      nuevoContenedor.appendChild(nuevo)
-}
-
-function id(id){
+/* ************  Petición  ************ */
+const id = (id) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(function(respuesta){
         return respuesta.json()
     })
 
     .then((pokemon)=>{
-        console.log(pokemon);
         if(isNaN(`${id}`)) {
-            console.log("Hola");
             pokemonBuscado(pokemon)
         }else {
             creacionCard(pokemon)
@@ -95,7 +64,50 @@ function id(id){
 }
 
 
-function creacionCard(pokemon){
+const pokemonBuscado = (pokemon) => {
+
+    const {types} = pokemon 
+
+    const color = pokeColores[types[0].type.name]
+    nuevoContenedor.style.background = `${color}`
+
+
+      let idPokemon= document.createElement("label")
+      let imagen = document.createElement("img")
+      let nombre = document.createElement("p")
+      let detallesLink = document.createElement("a")
+     
+      nuevo.classList.add("pokemon-encontrado")
+      idPokemon.classList.add("pokemon-encontrado__id")
+      imagen.classList.add("pokemon-encontrado__img") 
+      nombre.classList.add("pokemon-encontado__nombre")
+      detallesLink.classList.add("link-detalles")
+      detallesLink.classList.add("link-detalles__poke")
+
+      idPokemon.innerText = idCompleto(pokemon.id)
+     
+      imagen.src = pokemon.sprites.front_default;
+      nombre.innerText= pokemon.name;
+
+      detallesLink.innerText= "Ver Pokémon"
+      detallesLink.href=`/pokeDetalles.html?id=${pokemon.id}`
+
+      nuevo.appendChild(imagen)
+      nuevo.appendChild(idPokemon)
+      nuevo.appendChild(nombre)
+      nuevo.appendChild(detallesLink)
+
+      nuevoContenedor.appendChild(nuevo)
+}
+
+btnCerrar.onclick = () => {
+    contenedorEncontrar.classList.add("activar")
+}
+
+
+
+
+const creacionCard = (pokemon) => {
 
     let contenedorNombre= document.createElement("div")
     
@@ -127,8 +139,6 @@ function creacionCard(pokemon){
       detallesLink.innerText= "Ver Pokémon"
       detallesLink.href=`/pokeDetalles.html?id=${pokemon.id}`
 
-
-     /*  contenedorNombre.appendChild(imagen) */
       contenedorNombre.appendChild(nombre)
       contenedorNombre.appendChild(idPokemon)
       contenedorNombre.appendChild(detallesLink)
@@ -140,7 +150,7 @@ function creacionCard(pokemon){
 }
 
 
-function idCompleto(id){
+const idCompleto = (id) => {
     if(id.toString().length>=1 && id.toString().length<2){
        return id = "#00" + id
     }

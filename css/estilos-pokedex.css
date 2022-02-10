@@ -5,6 +5,8 @@
     box-sizing: border-box;
 }
 
+
+/* ********************************* CABECERA ******************************** */
 .hero{
     position: fixed;
     top: 0;
@@ -29,7 +31,6 @@
     margin-right: 20px;
 }
 
-
 .hero-busqueda__buscador{
     margin-right: 4px;
     padding: 3px;
@@ -45,6 +46,9 @@
     cursor: pointer;
 } 
 
+
+
+/* ********************************* TARJETAS DE CADA POKEMON ******************************** */
 .pokemon {
 	margin:10rem 2vw;
 }
@@ -99,23 +103,63 @@
     text-shadow: 0 0 6px white;
 }
 
+/* ********************************* POKEMON ENCONTRADO ******************************** */
 
-/* .pokemon-encontrado__div {
-   position: fixed;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 100%;
-   height: 25vh;
-   z-index: 20;
-   background-color: #0008;
-} */
-
-.pokemon-encontrado {
-    width: 50%;
+.poke-encontrado__contenedor {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 150;
 }
 
-/* **************** DETALLES ************** */
+.poke-encontrado {
+    position: fixed;
+    z-index: 155;
+    width: 80%;
+    color: white;
+    text-align: center;
+    background-color: transparent;
+    box-shadow: 0 0 10px 5px white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.poke-btn {
+    margin: .5rem auto;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.pokemon-encontrado__img {
+    width: 9rem;
+}
+
+.pokemon-encontrado__id {
+    display: inline-block;
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+.pokemon-encontado__nombre {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.link-detalles__poke {
+    font-size: 1.1rem;
+    margin-bottom: .5rem;
+}
+
+.activar {
+    display: none;
+}
+/* ********************************* DETALLES ******************************** */
 
 .pokeDetalles {
     position: relative;
@@ -195,6 +239,8 @@
     .contenedor-pokemon {
         width: 100%;
     }
+
+    
 }
 @media (min-width:64rem) {
    
@@ -208,4 +254,8 @@
     .contenedor-pokemon {
         width: 100%;
     }
+
+   .poke-encontrado {
+       width: 50%;
+   }
 }
