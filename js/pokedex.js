@@ -163,4 +163,4 @@ const idCompleto = (id) => {
 }
 
 
-infoPokemon(150)
+infoPokemon(500)
